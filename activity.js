@@ -46,10 +46,10 @@ function onColorChange(event) {
   var blue = parseInt(ge('blue').value, 10);
   var cd = ge('model').contentDocument;
 
-  cd.getElementById('redlight').style = sformat('fill: rgb({},0,0)', red);
-  cd.getElementById('greenlight').style = sformat('fill: rgb(0,{},0)', green);
-  cd.getElementById('bluelight').style = sformat('fill: rgb(0,0,{})', blue);
-  cd.getElementById('combinedlight').style = sformat('fill: rgb({},{},{})', red, green, blue);
+  cd.getElementById('redlight').style.fill = sformat('rgb({},0,0)', red);
+  cd.getElementById('greenlight').style.fill = sformat('rgb(0,{},0)', green);
+  cd.getElementById('bluelight').style.fill = sformat('rgb(0,0,{})', blue);
+  cd.getElementById('combinedlight').style.fill = sformat('rgb({},{},{})', red, green, blue);
 }
 
 function onHome(event) {
