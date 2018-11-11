@@ -11,20 +11,20 @@ SPDX-License-Identifier: CC-BY-SA-4.0
   <script src="activity.js"></script>
 </head>
 <body class="fvp fhp">
-<div id="topdiv" style="position: relative">
+<div id="topdiv">
   <object id="model" data="resource/model.svg" type="image/svg+xml"></object>
-  <img id="bar_home" src="resource/bar_home.svg" alt="Αρχική" title="Επιστροφή στην αρχική σελίδα" class="menuicon" style="left: 2em; top: 2em">
-  <img id="bar_help" src="resource/bar_help.svg" alt="Βοήθεια" title="Βοήθεια" class="menuicon" style="position: absolute; left: 14em; top: 2em">
-  <img id="bar_about" src="resource/bar_about.svg" alt="Περί" title="Περί" class="menuicon" style="left: 2em; top: 14em">
-  <img id="bar_fullscreen" src="resource/bar_fullscreen.svg" alt="Πλήρης οθόνη" title="Πλήρης οθόνη" class="menuicon" style="left: 10em; top: 10em">
-  <div id="reddiv" class="inputdiv" style="right: 2em; top: 2em">
-    <input id="red" type="range" value="255" min="0" max="255" class="input" title="Κόκκινο">
+  <img id="bar_home" src="resource/bar_home.svg" alt="Αρχική" title="Επιστροφή στην αρχική σελίδα" class="menuicon">
+  <img id="bar_help" src="resource/bar_help.svg" alt="Βοήθεια" title="Βοήθεια" class="menuicon">
+  <img id="bar_about" src="resource/bar_about.svg" alt="Περί" title="Περί" class="menuicon">
+  <img id="bar_fullscreen" src="resource/bar_fullscreen.svg" alt="Πλήρης οθόνη" title="Πλήρης οθόνη" class="menuicon">
+  <div id="reddiv" class="sliderdiv">
+    <input id="red" class="slider" type="range" value="255" min="0" max="255" title="Κόκκινο">
   </div>
-  <div id="greendiv" class="inputdiv" style="right: 2em; top: 10em">
-    <input id="green" type="range" value="255" min="0" max="255" class="input" title="Πράσινο">
+  <div id="greendiv" class="sliderdiv">
+    <input id="green" class="slider" type="range" value="255" min="0" max="255" title="Πράσινο">
   </div>
-  <div id="bluediv" class="inputdiv" style="right: 2em; top: 18em">
-    <input id="blue" type="range" value="255" min="0" max="255" class="input" title="Μπλε">
+  <div id="bluediv" class="sliderdiv">
+    <input id="blue" class="slider" type="range" value="255" min="0" max="255" title="Μπλε">
   </div>
 </div>
 </body>

@@ -50,7 +50,7 @@ input, select, range, p {
 }
 
 body {
-  background: rgb(10,37,91) url('resource/background.svg') no-repeat center center fixed;
+  background: rgb(10,37,91) url('resource/body.svg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -67,6 +67,7 @@ body {
   justify-content: space-around;
   height: 36em;
   width: 64em;
+  position: relative;
   text-align: center;
 }
 
@@ -75,56 +76,66 @@ body {
   height: 100%;
 }
 
-#sidebar {
-  background-color-: rgba(128,128,255,0.25);
-  border-: 0.5em solid rgba(230,230,230,0.25);
-  border-radius: 1em;
-  height: 34em;
-  width: 26em;
-  padding: 1em;
-}
-
 .menuicon {
   position: absolute;
   width: 5em;
   height: 5em;
   cursor: pointer;
-  border-: 0.2em solid transparent;
 }
 
 .menuicon:hover {
-  border-: 0.2em solid skyblue;
   -webkit-filter: brightness(120%) contrast(1.2);
   filter: brightness(120%) contrast(1.2);
 }
 
-.label {
-  width: 6em;
-  text-align: right;
-  padding-right: 0.5em;
+#bar_home {
+  left: 2em;
+  top: 2em;
 }
 
-.input {
+#bar_help {
+  left: 14em;
+  top: 2em;
+}
+
+#bar_about {
+  left: 2em;
+  top: 14em;
+}
+
+#bar_fullscreen {
+  left: 10em;
+  top: 10em;
+}
+
+.slider {
   width: 10em;
   height: 2em;
   margin: 0;
+  padding: 0;
 }
 
-.inputdiv {
+.sliderdiv {
   position: absolute;
-  border: 0.2em solid rgba(200,200,200);
+  border: 0.2em solid rgb(200,200,200);
   border-radius: 0.5em;
   padding: 0.5em;
 }
 
 #reddiv {
   background-image: linear-gradient(to right, black, red);
+  right: 2em;
+  top: 2em;
 }
 
 #greendiv {
   background-image: linear-gradient(to right, black, green);
+  right: 2em;
+  top: 10em;
 }
 
 #bluediv {
   background-image: linear-gradient(to right, black, blue);
+  right: 2em;
+  top: 18em;
 }
