@@ -44,12 +44,11 @@ function onColorChange(event) {
   var red = parseInt(ge('red').value, 10);
   var green = parseInt(ge('green').value, 10);
   var blue = parseInt(ge('blue').value, 10);
-  var cd = ge('model').contentDocument;
 
-  cd.getElementById('redlight').style.fill = sformat('rgb({},0,0)', red);
-  cd.getElementById('greenlight').style.fill = sformat('rgb(0,{},0)', green);
-  cd.getElementById('bluelight').style.fill = sformat('rgb(0,0,{})', blue);
-  cd.getElementById('combinedlight').style.fill = sformat('rgb({},{},{})', red, green, blue);
+  ge('redlight').style.fill = sformat('rgb({},0,0)', red);
+  ge('greenlight').style.fill = sformat('rgb(0,{},0)', green);
+  ge('bluelight').style.fill = sformat('rgb(0,0,{})', blue);
+  ge('combinedlight').style.fill = sformat('rgb({},{},{})', red, green, blue);
 }
 
 function onHome(event) {
