@@ -4,6 +4,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 */
 var act = null;  // activity object, see initActivity()
 
+function onError(message, source, lineno, colno, error) {
+  alert(sformat('Σφάλμα προγραμματιστή!\n'
+    + 'message: {}\nsource: {}\nlineno: {}\ncolno: {}\nerror: {}',
+  message, source, lineno, colno, error));
+}
+
 // ES6 string templates don't work in old Android WebView
 function sformat(format) {
   var args = arguments;
@@ -24,7 +30,37 @@ function ge(element) {
   return document.getElementById(element);
 }
 
-function onToggleFullScreen(event) {
+function onResize(event) {
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  if (w / h < 640 / 360) {
+    document.body.style.fontSize = sformat('{}px', 10 * w / 640);
+  } else {
+    document.body.style.fontSize = sformat('{}px', 10 * h / 360);
+  }
+}
+
+function doPreventDefault(event) {
+  event.preventDefault();
+}
+
+function onHome(event) {
+  window.history.back();
+}
+
+function onHelp(event) {
+  ge('help').style.display = 'flex';
+}
+
+function onHelpHide(event) {
+  ge('help').style.display = '';
+}
+
+function onAbout(event) {
+  window.open('credits/index_DS_II.html');
+}
+
+function onFullScreen(event) {
   var doc = window.document;
   var docEl = doc.documentElement;
   var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen
@@ -51,49 +87,33 @@ function onColorChange(event) {
   ge('combinedlight').style.fill = sformat('rgb({},{},{})', red, green, blue);
 }
 
-function onHome(event) {
-  window.history.back();
-}
-
-function onHelp(event) {
-  alert('Επιλέξτε την ποσότητα κόκκινου, πράσινου και μπλε από τους ροοστάτες δεξιά, για να συνθέσετε το κεντρικό χρώμα.');
-}
-
-function onAbout(event) {
-  window.open('credits/index_DS_II.html');
-}
-
-function onResize() {
-  var w = window.innerWidth;
-  var h = window.innerHeight;
-  if (w / h < 640 / 360) {
-    document.body.style.fontSize = sformat('{}px', 10 * w / 640);
-  } else {
-    document.body.style.fontSize = sformat('{}px', 10 * h / 360);
-  }
-}
-
-function addEvents() {
+function initActivity() {
   document.body.onresize = onResize;
+  document.body.oncontextmenu = doPreventDefault;
   ge('bar_home').onclick = onHome;
   ge('bar_help').onclick = onHelp;
+  ge('help').onclick = onHelpHide;
   ge('bar_about').onclick = onAbout;
-  ge('bar_fullscreen').onclick = onToggleFullScreen;
+  ge('bar_fullscreen').onclick = onFullScreen;
   ge('red').onchange = onColorChange;
   ge('red').oninput = onColorChange;
   ge('green').onchange = onColorChange;
   ge('green').oninput = onColorChange;
   ge('blue').onchange = onColorChange;
   ge('blue').oninput = onColorChange;
-}
-
-function initActivity() {
-  if (!act) {  // first run
-    addEvents();
+  for (i = 0; i < document.images.length; i += 1) {
+    document.images[i].ondragstart = doPreventDefault;
   }
   act = {};
   onColorChange();
   onResize();
 }
 
+window.onerror = onError;
 window.onload = initActivity;
+// Call onResize even before the images are loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', onResize);
+} else {  // `DOMContentLoaded` already fired
+  onResize();
+}
